@@ -1,0 +1,6 @@
+{
+  "name": "root/wordcha",
+  "require": {
+    "nette/forms": "^2.4"
+  }
+}
