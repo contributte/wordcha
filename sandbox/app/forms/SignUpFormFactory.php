@@ -4,11 +4,12 @@ namespace App\Forms;
 
 use App\Model;
 use Nette\Application\UI\Form;
+use Nette\SmartObject;
 
 
 class SignUpFormFactory
 {
-    use Nette\SmartObject;
+    use SmartObject;
 
     const PASSWORD_MIN_LENGTH = 7;
 

@@ -1,6 +1,6 @@
 <?php
-namespace Minetro\Wordcha\DI;
 
+namespace Minetro\Wordcha\DI;
 
 use Minetro\Wordcha\Factory;
 use Minetro\Wordcha\Form\WordchaContainer;
