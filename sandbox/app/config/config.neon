@@ -22,3 +22,8 @@ services:
 	- App\Forms\SignUpFormFactory
 	router: App\RouterFactory::createRouter
 
+extensions:
+    wordcha: Minetro\Wordcha\DI\WordchaExtension(%debugMode%)
+
+wordcha:
+    datasource: numeric

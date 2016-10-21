@@ -7,10 +7,11 @@ use Minetro\Wordcha\DataSource\DataSource;
 class WordchaGenerator implements Generator
 {
 
-    /**
-     * @var DataSource
-     */
+    /** @var DataSource */
     private $dataSource;
+
+    /** @var string */
+    private $uniqueKey;
 
     /**
      * WordchaGenerator constructor.
@@ -19,6 +20,14 @@ class WordchaGenerator implements Generator
     public function __construct(DataSource $dataSource)
     {
         $this->dataSource = $dataSource;
+    }
+
+    /**
+     * @param string $uniqueKey
+     */
+    public function setUniqueKey($uniqueKey)
+    {
+        $this->uniqueKey = $uniqueKey;
     }
 
     /**
@@ -41,7 +50,10 @@ class WordchaGenerator implements Generator
      */
     public function hash($answer)
     {
-        return md5($answer, 'AAAA'); //TODO
+        if ($this->uniqueKey) {
+            $answer .= $this->uniqueKey;
+        }
+        return md5($answer); //TODO
     }
 
 }
