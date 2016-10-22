@@ -27,6 +27,8 @@ class WordchaValidator implements Validator
      */
     public function validate($answer, $hash)
     {
-        return $hash === $this->generator->hash($answer);
+        $answerHash = $this->generator->hash($answer);
+
+        return $hash === $answerHash;
     }
 }

@@ -32,7 +32,7 @@ class SignInFormFactory
         $form = $this->factory->create();
 
 
-        $form->addWordcha('aa');
+        $form->addWordcha('aa', 'Antispam');
 
         $form->addCheckbox('remember', 'Keep me signed in');
 

@@ -10,11 +10,19 @@ class NumericDataSource implements DataSource
      */
     public function get()
     {
-        $question = '1 + 1';
-        $answer = '2';
+        $numberA = $this->generateNumber();
+        $numberB = $this->generateNumber();
+
+        $question = sprintf('%s + %s', $numberA, $numberB);
+        $answer = $numberA + $numberB;
 
         $pair = new Pair($question, $answer);
 
         return $pair;
+    }
+
+    private function generateNumber()
+    {
+        return rand(0, 10);
     }
 }
