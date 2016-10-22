@@ -34,7 +34,7 @@ class WordchaContainer extends Container
 
         $security = $this->generator->generate();
 
-        $textInput = new TextInput($security->getQuestion(), '');
+        $textInput = new TextInput($security->getQuestion());
 
         dump($security);
 
@@ -69,6 +69,7 @@ class WordchaContainer extends Container
         $form = $this->getForm(TRUE);
         $hash = $form->getHttpData($form::DATA_LINE, $this->getHash()->getHtmlName());
         $answer = $form->getHttpData($form::DATA_LINE, $this->getQuestion()->getHtmlName());
+        $answer = mb_strtolower($answer, 'UTF-8');
 
         return $this->validator->validate($answer, $hash);
     }

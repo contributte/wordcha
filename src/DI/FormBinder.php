@@ -13,7 +13,8 @@ final class FormBinder
      */
     public static function bind(Factory $factory)
     {
-        Container::extensionMethod('addWordcha', function ($container, $name = 'captcha') use ($factory) {
+        Container::extensionMethod('addWordcha', function ($container, $name = 'captcha', $label = 'Captcha') use ($factory) {
+
             return $container[$name] = new WordchaContainer($factory);
         });
     }

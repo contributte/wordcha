@@ -26,4 +26,7 @@ extensions:
     wordcha: Minetro\Wordcha\DI\WordchaExtension(%debugMode%)
 
 wordcha:
-    datasource: numeric
+    datasource: questions
+    questions:
+        'Hlavní město ČR': 'Praha'
+        'Hlavní město SK': 'Bratislava'

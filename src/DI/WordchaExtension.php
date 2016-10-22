@@ -2,6 +2,7 @@
 namespace Minetro\Wordcha\DI;
 
 use Minetro\Wordcha\DataSource\NumericDataSource;
+use Minetro\Wordcha\DataSource\QuestionDataSource;
 use Minetro\Wordcha\WordchaFactory;
 use Minetro\Wordcha\WordchaUniqueFactory;
 use Nette\DI\CompilerExtension;
@@ -14,11 +15,12 @@ final class WordchaExtension extends CompilerExtension
     /** @var array */
     private $defaults = [
         'datasource' => 'numeric',
+        'questions' => []
     ];
 
     /** @var array */
     private static $dataSources = [
-        'numeric'
+        'numeric',
     ];
 
     /**
@@ -47,6 +49,8 @@ final class WordchaExtension extends CompilerExtension
 
         if ($config['datasource'] == 'numeric') {
             $dataSource->setClass(NumericDataSource::class);
+        } elseif ($config['datasource'] == 'questions') {
+            $dataSource->setClass(QuestionDataSource::class, [$config['questions']]);
         }
 
         // Add factory
