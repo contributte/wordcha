@@ -1,1 +1,6 @@
-vendor/*
+/.idea
+/vendor
+/composer.lock
+/tests/*.log
+/tests/tmp
+/tests/coverage.html

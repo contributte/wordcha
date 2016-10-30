@@ -8,67 +8,87 @@ use Minetro\Wordcha\WordchaUniqueFactory;
 use Nette\DI\CompilerExtension;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpLiteral;
-use Nette\Utils\Validators;
+use Nette\Utils\AssertionException;
 
+/**
+ * Class WordchaExtension
+ *
+ * @package Minetro\Wordcha\DI
+ */
 final class WordchaExtension extends CompilerExtension
 {
-    /** @var array */
-    private $defaults = [
-        'datasource' => 'numeric',
-        'questions' => []
-    ];
 
-    /** @var array */
-    private static $dataSources = [
-        'numeric',
-    ];
+	/** @var array */
+	private $defaults = [
+		'datasource' => 'numeric',
+		'questions'  => [],
+	];
 
-    /**
-     * @var bool
-     */
-    private $debugMode;
+	/** @var array */
+	private static $dataSources = [
+		'numeric',
+		'questions',
+	];
 
-    public function __construct($debugMode = false)
-    {
-        $this->debugMode = $debugMode;
-    }
+	/** @var bool */
+	private $debugMode;
 
-    /**
-     * Register services
-     */
-    public function loadConfiguration()
-    {
-        $builder = $this->getContainerBuilder();
-        $config = $this->validateConfig($this->defaults);
+	/**
+	 * WordchaExtension constructor.
+	 *
+	 * @param bool $debugMode
+	 */
+	public function __construct($debugMode = FALSE)
+	{
+		$this->debugMode = $debugMode;
+	}
 
-        // Validate dataSource
-        Validators::isInRange($config['datasource'], self::$dataSources);
+	/**
+	 * Register services
+	 */
+	public function loadConfiguration()
+	{
+		$builder = $this->getContainerBuilder();
+		$config  = $this->validateConfig($this->defaults);
 
-        // Add datasource
-        $dataSource = $builder->addDefinition($this->prefix('dataSource'));
+		// Validate dataSource
+		if (!in_array($config['datasource'], self::$dataSources)) {
+			throw new AssertionException(
+				'DataSource is not valid. Valid datasources are ' . implode(', ', self::$dataSources)
+			);
+		}
 
-        if ($config['datasource'] == 'numeric') {
-            $dataSource->setClass(NumericDataSource::class);
-        } elseif ($config['datasource'] == 'questions') {
-            $dataSource->setClass(QuestionDataSource::class, [$config['questions']]);
-        }
+		// Add datasource
+		$dataSource = $builder->addDefinition($this->prefix('dataSource'));
 
-        // Add factory
-        $factory = $builder->addDefinition($this->prefix('factory'));
-        if ($this->debugMode) {
-            $factory->setClass(WordchaFactory::class, [$dataSource]);
-        } else {
-            $uniqueKey = md5(random_bytes(1)); //TODO
-            $factory->setClass(WordchaUniqueFactory::class, [$dataSource, $uniqueKey]);
-        }
-    }
+		if ($config['datasource'] == 'numeric') {
+			$dataSource->setClass(NumericDataSource::class);
+		} elseif ($config['datasource'] == 'questions') {
+			$dataSource->setClass(QuestionDataSource::class, [$config['questions']]);
+		}
 
-    /**
-     * @param ClassType $class
-     */
-    public function afterCompile(ClassType $class)
-    {
-        $method = $class->getMethod('initialize');
-        $method->addBody('?::bind($this->getService(?));', [new PhpLiteral(FormBinder::class), $this->prefix('factory')]);
-    }
+		// Add factory
+		$factory = $builder->addDefinition($this->prefix('factory'));
+		if ($this->debugMode) {
+			$factory->setClass(WordchaFactory::class, [$dataSource]);
+		} else {
+			$uniqueKey = md5(random_bytes(1)); //TODO vybrat hashovací funkci
+			$factory->setClass(WordchaUniqueFactory::class, [$dataSource, $uniqueKey]);
+		}
+	}
+
+	/**
+	 * @param ClassType $class
+	 */
+	public function afterCompile(ClassType $class)
+	{
+		$method = $class->getMethod('initialize');
+		$method->addBody(
+			'?::bind($this->getService(?));',
+			[
+				new PhpLiteral(FormBinder::class),
+				$this->prefix('factory'),
+			]
+		);
+	}
 }
