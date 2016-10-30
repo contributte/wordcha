@@ -8,70 +8,70 @@ use Minetro\Wordcha\Validator\Validator;
 use Nette\Forms\Container;
 use Nette\Forms\Controls\HiddenField;
 use Nette\Forms\Controls\TextInput;
+use Nette\Utils\Strings;
 
+/**
+ * Class WordchaContainer
+ *
+ * @package Minetro\Wordcha\Form
+ */
 class WordchaContainer extends Container
 {
-    /**
-     * @var Validator
-     */
-    private $validator;
 
-    /**
-     * @var Generator
-     */
-    private $generator;
+	/** @var Validator */
+	private $validator;
 
-    /**
-     * WordchaContainer constructor.
-     * @param Factory $factory
-     */
-    public function __construct(Factory $factory)
-    {
-        parent::__construct();
+	/** @var Generator */
+	private $generator;
 
-        $this->validator = $factory->createValidator();
-        $this->generator = $factory->createGenerator();
+	/**
+	 * WordchaContainer constructor.
+	 *
+	 * @param Factory $factory
+	 */
+	public function __construct(Factory $factory)
+	{
+		parent::__construct();
 
-        $security = $this->generator->generate();
+		$this->validator = $factory->createValidator();
+		$this->generator = $factory->createGenerator();
 
-        $textInput = new TextInput($security->getQuestion());
+		$security = $this->generator->generate();
 
-        dump($security);
+		$textInput   = new TextInput($security->getQuestion());
+		$hiddenField = new HiddenField($security->getHash());
 
-        $hiddenField = new HiddenField();
-        $hiddenField->setValue($security->getHash());
+		$this['question'] = $textInput;
+		$this['hash']     = $hiddenField;
+	}
 
-        $this['question'] = $textInput;
-        $this['hash'] = $hiddenField;
-    }
+	/**
+	 * @return TextInput
+	 */
+	public function getQuestion()
+	{
+		return $this['question'];
+	}
 
-    /**
-     * @return TextInput
-     */
-    public function getQuestion()
-    {
-        return $this['question'];
-    }
+	/**
+	 * @return HiddenField
+	 */
+	public function getHash()
+	{
+		return $this['hash'];
+	}
 
-    /**
-     * @return HiddenField
-     */
-    public function getHash()
-    {
-        return $this['hash'];
-    }
+	/**
+	 * @return bool
+	 */
+	public function verify()
+	{
+		$form   = $this->getForm(TRUE);
+		$hash   = $form->getHttpData($form::DATA_LINE, $this->getHash()->getHtmlName());
+		$answer = $form->getHttpData($form::DATA_LINE, $this->getQuestion()->getHtmlName());
+		$answer = Strings::lower($answer);
 
-    /**
-     * @return bool
-     */
-    public function verify()
-    {
-        $form = $this->getForm(TRUE);
-        $hash = $form->getHttpData($form::DATA_LINE, $this->getHash()->getHtmlName());
-        $answer = $form->getHttpData($form::DATA_LINE, $this->getQuestion()->getHtmlName());
-        $answer = mb_strtolower($answer, 'UTF-8');
-
-        return $this->validator->validate($answer, $hash);
-    }
+		return $this->validator->validate($answer, $hash);
+	}
 
 }

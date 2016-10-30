@@ -4,31 +4,37 @@ namespace Minetro\Wordcha\Validator;
 
 use Minetro\Wordcha\Generator\Generator;
 
+/**
+ * Class WordchaValidator
+ *
+ * @package Minetro\Wordcha\Validator
+ */
 class WordchaValidator implements Validator
 {
-    /**
-     * @var Generator
-     */
-    private $generator;
 
-    /**
-     * NumericValidator constructor.
-     * @param Generator $generator
-     */
-    public function __construct(Generator $generator)
-    {
-        $this->generator = $generator;
-    }
+	/** @var Generator */
+	private $generator;
 
-    /**
-     * @param $answer
-     * @param $hash
-     * @return bool
-     */
-    public function validate($answer, $hash)
-    {
-        $answerHash = $this->generator->hash($answer);
+	/**
+	 * NumericValidator constructor.
+	 *
+	 * @param Generator $generator
+	 */
+	public function __construct(Generator $generator)
+	{
+		$this->generator = $generator;
+	}
 
-        return $hash === $answerHash;
-    }
+	/**
+	 * @param $answer
+	 * @param $hash
+	 *
+	 * @return bool
+	 */
+	public function validate($answer, $hash)
+	{
+		$answerHash = $this->generator->hash($answer);
+
+		return $hash === $answerHash;
+	}
 }
