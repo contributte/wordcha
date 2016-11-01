@@ -23,6 +23,8 @@
     "psr-4": {
       "Minetro\\Wordcha\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "classmap": ["tests/"]
   }
-
 }

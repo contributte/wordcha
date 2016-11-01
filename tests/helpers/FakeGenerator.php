@@ -8,12 +8,14 @@ use Minetro\Wordcha\Generator\Security;
 class FakeGenerator implements Generator
 {
 
+	const HASH = 'a1b2';
+
 	/**
 	 * @return Security
 	 */
 	public function generate()
 	{
-		// TODO: Implement generate() method.
+		return new Security('...', self::HASH);
 	}
 
 	/**
@@ -23,6 +25,6 @@ class FakeGenerator implements Generator
 	 */
 	public function hash($answer)
 	{
-		// TODO: Implement hash() method.
+		return self::HASH;
 	}
 }
