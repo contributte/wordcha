@@ -7,7 +7,6 @@
 use Minetro\Wordcha\DI\FormBinder;
 
 use Nette\Forms\Form;
-use Tester\Assert;
 
 require_once __DIR__ . '/../../bootstrap.php';
 
