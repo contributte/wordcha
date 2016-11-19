@@ -74,4 +74,20 @@ class WordchaContainer extends Container
 		return $this->validator->validate($answer, $hash);
 	}
 
+	/**
+	 * @return Validator
+	 */
+	public function getValidator()
+	{
+		return $this->validator;
+	}
+
+	/**
+	 * @return Generator
+	 */
+	public function getGenerator()
+	{
+		return $this->generator;
+	}
+
 }

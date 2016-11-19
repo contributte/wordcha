@@ -14,4 +14,5 @@ interface DataSource
 	 * @return Pair
 	 */
 	public function get();
+
 }

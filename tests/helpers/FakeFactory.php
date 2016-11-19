@@ -10,12 +10,25 @@ use Minetro\Wordcha\Validator\Validator;
 final class FakeFactory implements Factory
 {
 
+	/** @var bool */
+	private $pass;
+
+	/**
+	 * FakeFactory constructor.
+	 *
+	 * @param bool $pass
+	 */
+	public function __construct($pass)
+	{
+		$this->pass = $pass;
+	}
+
 	/**
 	 * @return Validator
 	 */
 	public function createValidator()
 	{
-		return new FakeValidator();
+		return new FakeValidator($this->pass);
 	}
 
 	/**
@@ -25,4 +38,5 @@ final class FakeFactory implements Factory
 	{
 		return new FakeGenerator();
 	}
+
 }

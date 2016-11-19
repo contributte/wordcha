@@ -19,7 +19,7 @@ class FakeGenerator implements Generator
 	}
 
 	/**
-	 * @param $answer
+	 * @param string $answer
 	 *
 	 * @return string
 	 */
@@ -27,4 +27,5 @@ class FakeGenerator implements Generator
 	{
 		return self::HASH;
 	}
+
 }

@@ -10,21 +10,17 @@ namespace Minetro\Wordcha\DataSource;
 class Pair
 {
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $question;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $answer;
 
 	/**
 	 * Pair constructor.
 	 *
-	 * @param $question
-	 * @param $answer
+	 * @param string $question
+	 * @param string $answer
 	 */
 	public function __construct($question, $answer)
 	{

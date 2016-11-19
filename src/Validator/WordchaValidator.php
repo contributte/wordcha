@@ -26,8 +26,8 @@ class WordchaValidator implements Validator
 	}
 
 	/**
-	 * @param $answer
-	 * @param $hash
+	 * @param string $answer
+	 * @param string $hash
 	 *
 	 * @return bool
 	 */
@@ -37,4 +37,5 @@ class WordchaValidator implements Validator
 
 		return $hash === $answerHash;
 	}
+
 }

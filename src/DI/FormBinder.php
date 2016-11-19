@@ -16,13 +16,17 @@ final class FormBinder
 
 	/**
 	 * @param Factory $factory
+	 *
+	 * @return void
 	 */
 	public static function bind(Factory $factory)
 	{
-		Container::extensionMethod('addWordcha',
+		Container::extensionMethod(
+            'addWordcha',
 			function ($container, $name = 'captcha', $label = 'Captcha') use ($factory) {
-
 				return $container[$name] = new WordchaContainer($factory);
-			});
+            }
+        );
 	}
+
 }

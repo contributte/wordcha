@@ -42,4 +42,5 @@ class WordchaFactory implements Factory
 	{
 		return new WordchaGenerator($this->dataSource);
 	}
+
 }

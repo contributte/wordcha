@@ -17,4 +17,5 @@ interface Validator
 	 * @return bool
 	 */
 	public function validate($answer, $hash);
+
 }

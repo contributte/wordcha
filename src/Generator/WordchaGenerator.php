@@ -30,6 +30,8 @@ class WordchaGenerator implements Generator
 
 	/**
 	 * @param string $uniqueKey
+	 *
+	 * @return void
 	 */
 	public function setUniqueKey($uniqueKey)
 	{
@@ -61,7 +63,7 @@ class WordchaGenerator implements Generator
 			$answer .= $this->uniqueKey;
 		}
 
-		return md5($answer); //TODO vybrat hashovací funkci
+		return sha1(strtolower($answer));
 	}
 
 }

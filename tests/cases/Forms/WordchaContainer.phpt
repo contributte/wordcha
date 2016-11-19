@@ -4,37 +4,35 @@
  * Test: Forms/WordchaContainer
  */
 
-//use Minetro\SeznamCaptcha\Forms\CaptchaContainer;
-//use Minetro\SeznamCaptcha\Forms\CaptchaHash;
-//use Minetro\SeznamCaptcha\Forms\CaptchaImage;
-//use Minetro\SeznamCaptcha\Forms\CaptchaInput;
 use Minetro\Wordcha\Form\WordchaContainer;
+use Nette\Forms\Controls\HiddenField;
+use Nette\Forms\Controls\TextInput;
+use Tester\Assert;
 
 require_once __DIR__ . '/../../bootstrap.php';
 
 test(function () {
-	$factory = new FakeFactory();
+	$factory = new FakeFactory(TRUE);
 	$captcha = new WordchaContainer($factory);
-	//	Assert::type(CaptchaImage::class, $captcha['image']);
-	//	Assert::type(CaptchaInput::class, $captcha['code']);
-	//	Assert::type(CaptchaHash::class, $captcha['hash']);
-	//
-	//	Assert::equal(FakeSeznamCaptcha::HASH, $captcha['hash']->getHash());
-	//	Assert::equal(FakeSeznamCaptcha::IMAGE, $captcha['image']->getImage());
+	Assert::type(WordchaContainer::class, $captcha);
+	Assert::type(TextInput::class, $captcha['question']);
+	Assert::type(HiddenField::class, $captcha['hash']);
+
+	Assert::equal(FakeGenerator::HASH, $captcha['hash']->getValue());
 });
 
 test(function () {
-	//	$captcha = new CaptchaContainer(new FakeSeznamCaptcha($pass = true));
-	//	$validator = $captcha->getValidator();
-	//
+	$captcha   = new WordchaContainer(new FakeFactory(TRUE));
+	$validator = $captcha->getValidator();
+
 	//	 Always true, because of FakeSeznamCaptcha($pass)
-	//	Assert::true($validator->validate('foo', 'bar'));
+	Assert::true($validator->validate('foo', 'bar'));
 });
 
 test(function () {
-	//	$captcha = new CaptchaContainer(new FakeSeznamCaptcha($pass = FALSE));
-	//	$validator = $captcha->getValidator();
+	$captcha   = new WordchaContainer(new FakeFactory($pass = FALSE));
+	$validator = $captcha->getValidator();
 
 	// Always false, because of FakeSeznamCaptcha($pass)
-	//	Assert::false($validator->validate('foo', 'bar'));
+	Assert::false($validator->validate('foo', 'bar'));
 });
