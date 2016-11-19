@@ -8,6 +8,19 @@ use Minetro\Wordcha\Validator\Validator;
 class FakeValidator implements Validator
 {
 
+	/** @var bool */
+	private $pass;
+
+	/**
+	 * FakeValidator constructor.
+	 *
+	 * @param bool $pass
+	 */
+	public function __construct($pass)
+	{
+		$this->pass = $pass;
+	}
+
 	/**
 	 * @param string $answer
 	 * @param string $hash
@@ -16,6 +29,7 @@ class FakeValidator implements Validator
 	 */
 	public function validate($answer, $hash)
 	{
-		return TRUE;
+		return $this->pass;
 	}
+
 }

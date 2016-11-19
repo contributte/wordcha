@@ -3,8 +3,7 @@
 namespace Minetro\Wordcha\DataSource;
 
 use Exception;
-use Nette\Utils\AssertionException;
-use Nette\Utils\Strings;
+use Nette\InvalidArgumentException;
 
 /**
  * Class QuestionDataSource
@@ -14,9 +13,7 @@ use Nette\Utils\Strings;
 class QuestionDataSource implements DataSource
 {
 
-	/**
-	 * @var array
-	 */
+	/** @var array */
 	private $questions;
 
 	/**
@@ -36,12 +33,11 @@ class QuestionDataSource implements DataSource
 	public function get()
 	{
 		if (empty($this->questions)) {
-			throw new AssertionException('Questions are empty'); //TODO jakou exception?
+			throw new InvalidArgumentException('Questions are empty');
 		}
 
 		$key    = array_rand($this->questions);
 		$answer = $this->questions[$key];
-		$answer = Strings::lower($answer);
 		$pair   = new Pair($key, $answer);
 
 		return $pair;

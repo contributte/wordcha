@@ -16,7 +16,7 @@ interface Generator
 	public function generate();
 
 	/**
-	 * @param $answer
+	 * @param string $answer
 	 *
 	 * @return string
 	 */

@@ -20,6 +20,7 @@ final class WordchaExtension extends CompilerExtension
 
 	/** @var array */
 	private $defaults = [
+		'auto'       => TRUE,
 		'datasource' => 'numeric',
 		'questions'  => [],
 	];
@@ -45,6 +46,9 @@ final class WordchaExtension extends CompilerExtension
 
 	/**
 	 * Register services
+	 *
+	 * @throws AssertionException
+	 * @return void
 	 */
 	public function loadConfiguration()
 	{
@@ -72,23 +76,31 @@ final class WordchaExtension extends CompilerExtension
 		if ($this->debugMode) {
 			$factory->setClass(WordchaFactory::class, [$dataSource]);
 		} else {
-			$uniqueKey = md5(random_bytes(1)); //TODO vybrat hashovací funkci
+			$uniqueKey = sha1(random_bytes(10) . microtime(TRUE));
 			$factory->setClass(WordchaUniqueFactory::class, [$dataSource, $uniqueKey]);
 		}
 	}
 
 	/**
 	 * @param ClassType $class
+	 *
+	 * @return void
 	 */
 	public function afterCompile(ClassType $class)
 	{
-		$method = $class->getMethod('initialize');
-		$method->addBody(
-			'?::bind($this->getService(?));',
-			[
-				new PhpLiteral(FormBinder::class),
-				$this->prefix('factory'),
-			]
-		);
+		$config = $this->validateConfig($this->defaults);
+
+		if ($config['auto']) {
+
+			$method = $class->getMethod('initialize');
+			$method->addBody(
+				'?::bind($this->getService(?));',
+				[
+					new PhpLiteral(FormBinder::class),
+					$this->prefix('factory'),
+				]
+			);
+		}
 	}
+
 }

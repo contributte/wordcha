@@ -33,4 +33,5 @@ class NumericDataSource implements DataSource
 	{
 		return rand(0, 10);
 	}
+
 }
