@@ -49,11 +49,7 @@ wordcha:
 
 ![captcha](https://raw.githubusercontent.com/minetro/wordcha/master/wordcha.png)
 
-### Automatic
-
-Just register an extension and keep `auto` argument as it is.
-
-#### Form component
+### Form component
 
 ```php
 use Nette\Application\UI\Form;
@@ -63,94 +59,30 @@ protected function createComponentForm()
     $form = new Form();
 
     $form->addWordcha('wordcha')
-        ->getCode()
-        ->setRequired('Captcha code is required');
+        ->getQuestion()
+        ->setRequired('Please answer antispam question');
 
     $form->addSubmit('send');
 
     $form->onValidate[] = function (Form $form) {
-        if ($form['captcha']->verify() !== TRUE) {
+        if ($form['wordcha']->verify() !== TRUE) {
             $form->addError('Are you robot?');
         }
     };
 
     $form->onSuccess[] = function (Form $form) {
-        dump($form['captcha']);
+        dump($form['wordcha']);
     };
 
     return $form;
 }
 ```
-
-### Manual
-
-#### Form component
-
-```php
-use Minetro\SeznamCaptcha\Forms\CaptchaHash;
-use Minetro\SeznamCaptcha\Forms\CaptchaImage;
-use Minetro\SeznamCaptcha\Forms\CaptchaInput;
-use Minetro\SeznamCaptcha\Provider\CaptchaValidator;
-use Minetro\SeznamCaptcha\Provider\ProviderFactory;
-use Nette\Application\UI\Form;
-
-/** @var ProviderFactory @inject */
-public $providerFactory;
-
-protected function createComponentForm()
-{
-    $form = new Form();
-
-    $provider = $this->providerFactory->create();
-    $form['image'] = new CaptchaImage('Captcha', $provider);
-    $form['hash'] = new CaptchaHash($provider);
-    $form['code'] = new CaptchaInput('Code');
-
-    $form->addSubmit('send');
-
-    $form->onValidate[] = function (Form $form) use ($provider) {
-        $validator = new CaptchaValidator($provider);
-
-        $hash = $form['hash']->getHttpHash();
-        $code = $form['code']->getHttpCode();
-
-        if ($validator->validate($code, $hash) !== TRUE) {
-            $form->addError('Are you robot?');
-        }
-    };
-
-    $form->onSuccess[] = function (Form $form) {
-        dump($form);
-    };
-
-    return $form;
-}
-```
-
-For better usability add this functionality to your `BaseForms`, `BaseFormFactory` or 
-something like this.
-
-You can also create a trait for it.
 
 ### Rendering
-
-#### Automatic
 
 ```
 {control form}
 ````
-
-#### Manual
-
-Needs a `CaptchaContainer`.
-
-```latte
-<form n:name="form">
-    {input captcha-image}
-    {input captcha-code}
-</form>
-
-```
 
 -----
 
