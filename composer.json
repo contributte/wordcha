@@ -20,7 +20,8 @@
   },
   "require-dev": {
     "nette/tester": "1.7.0",
-    "ninjify/qa": "^0.3.0"
+    "ninjify/qa": "^0.3.0",
+    "mockery/mockery": "^0.9.6"
   },
   "autoload": {
     "psr-4": {
