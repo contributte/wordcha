@@ -2,46 +2,32 @@
 
 namespace App\Presenters;
 
-use App\Forms;
-use Nette;
-
+use Nette\Forms\Form;
 
 class SignPresenter extends BasePresenter
 {
-    /** @var Forms\SignInFormFactory @inject */
-    public $signInFactory;
 
-    /** @var Forms\SignUpFormFactory @inject */
-    public $signUpFactory;
+	protected function createComponentForm()
+	{
+		$form = new Form();
 
+		$form->addWordcha('wordcha')
+			->getQuestion()
+			->setRequired('Captcha code is required');
 
-    /**
-     * Sign-in form factory.
-     * @return Nette\Application\UI\Form
-     */
-    protected function createComponentSignInForm()
-    {
-        return $this->signInFactory->create(function () {
-            $this->redirect('Homepage:');
-        });
-    }
+		$form->addSubmit('send');
 
+		$form->onValidate[] = function (Form $form) {
+			if ($form['wordcha']->verify() !== TRUE) {
+				$form->addError('Are you robot?');
+			}
+		};
 
-    /**
-     * Sign-up form factory.
-     * @return Nette\Application\UI\Form
-     */
-    protected function createComponentSignUpForm()
-    {
-        return $this->signUpFactory->create(function () {
-            $this->redirect('Homepage:');
-        });
-    }
+		$form->onSuccess[] = function (Form $form) {
+			dump($form['wordcha']);
+		};
 
-
-    public function actionOut()
-    {
-        $this->getUser()->logout();
-    }
+		return $form;
+	}
 
 }
