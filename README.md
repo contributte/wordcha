@@ -37,6 +37,25 @@ composer require contributte/wordcha
 - [Form - setup nette form](https://github.com/contributte/wordcha/blob/master/.docs/README.md#form)
 - [Example - real preview](https://github.com/contributte/wordcha/blob/master/.docs/README.md#example)
 
+## Maintainers
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img width="150" height="150" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=150">
+        </br>
+        <a href="https://github.com/f3l1x">Milan Felix Šulc</a>
+      </td>
+      <td align="center">
+        <img width="150" height="150" src="https://avatars3.githubusercontent.com/u/6731626?v=3&s=150">
+        </br>
+        <a href="https://github.com/benijo">Josef Benjač</a>
+      </td>
+    </tr>
+  <tbody>
+</table>
+
 -----
 
 Thank you for testing, reporting and contributing.
