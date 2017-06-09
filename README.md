@@ -32,10 +32,10 @@ composer require contributte/wordcha
 
 ## Overview
 
-- [Usage - how to register](https://github.com/contributte/console/blob/master/.docs/README.md#usage)
-- [Extension - how to configure](https://github.com/contributte/console/blob/master/.docs/README.md#configuration)
-- [Form - setup nette form](https://github.com/contributte/console/blob/master/.docs/README.md#form)
-- [Example - real preview](https://github.com/contributte/console/blob/master/.docs/README.md#example)
+- [Usage - how to register](https://github.com/contributte/wordcha/blob/master/.docs/README.md#usage)
+- [Extension - how to configure](https://github.com/contributte/wordcha/blob/master/.docs/README.md#configuration)
+- [Form - setup nette form](https://github.com/contributte/wordcha/blob/master/.docs/README.md#form)
+- [Example - real preview](https://github.com/contributte/wordcha/blob/master/.docs/README.md#example)
 
 -----
 
