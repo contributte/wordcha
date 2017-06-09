@@ -40,7 +40,7 @@ script:
   - composer run-script tester
 
   # Nette\Tester + CodeCoverage
-  - if [ "$COVERAGE" != "" ]; then composer tester-coverage fi
+  - if [ "$COVERAGE" != "" ]; then composer tester-coverage; fi
 
 after_script:
   # Coverage (Coveralls)
