@@ -11,7 +11,7 @@
 
 ```yaml
 extensions:
-	wordcha: Contributte\Wordcha\DI\WordchaExtension
+    wordcha: Contributte\Wordcha\DI\WordchaExtension
 ```
 
 ## Configuration
@@ -22,17 +22,17 @@ At the beginning you should pick the right datasource.
 
 ```yaml
 wordcha:
-	datasource: numeric
+    datasource: numeric
 ```
 
 ### Question datasource
 
 ```yaml
 wordcha:
-	datasource: questions
-	questions: 
-		"Question a?": "a"
-		"Question b?": "b"
+    datasource: questions
+    questions: 
+        "Question a?": "a"
+        "Question b?": "b"
 ```
 
 ## Form
