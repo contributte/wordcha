@@ -1,6 +1,8 @@
-/.idea
+# Composer
 /vendor
 /composer.lock
+
+# Tests
 /tests/*.log
 /tests/tmp
 /tests/coverage.html

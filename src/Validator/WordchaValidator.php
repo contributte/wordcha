@@ -1,13 +1,13 @@
 <?php
 
-namespace Minetro\Wordcha\Validator;
+namespace Contributte\Wordcha\Validator;
 
-use Minetro\Wordcha\Generator\Generator;
+use Contributte\Wordcha\Generator\Generator;
 
 /**
  * Class WordchaValidator
  *
- * @package Minetro\Wordcha\Validator
+ * @package Contributte\Wordcha\Validator
  */
 class WordchaValidator implements Validator
 {

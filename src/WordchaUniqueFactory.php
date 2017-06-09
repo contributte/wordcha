@@ -1,14 +1,14 @@
 <?php
 
-namespace Minetro\Wordcha;
+namespace Contributte\Wordcha;
 
-use Minetro\Wordcha\DataSource\DataSource;
-use Minetro\Wordcha\Generator\WordchaGenerator;
+use Contributte\Wordcha\DataSource\DataSource;
+use Contributte\Wordcha\Generator\WordchaGenerator;
 
 /**
  * Class WordchaUniqueFactory
  *
- * @package Minetro\Wordcha
+ * @package Contributte\Wordcha
  */
 class WordchaUniqueFactory extends WordchaFactory
 {
@@ -20,7 +20,7 @@ class WordchaUniqueFactory extends WordchaFactory
 	 * NumericFactory constructor.
 	 *
 	 * @param DataSource $dataSource
-	 * @param string     $uniqueKey
+	 * @param string $uniqueKey
 	 */
 	public function __construct(DataSource $dataSource, $uniqueKey)
 	{

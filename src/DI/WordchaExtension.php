@@ -1,10 +1,11 @@
 <?php
-namespace Minetro\Wordcha\DI;
 
-use Minetro\Wordcha\DataSource\NumericDataSource;
-use Minetro\Wordcha\DataSource\QuestionDataSource;
-use Minetro\Wordcha\WordchaFactory;
-use Minetro\Wordcha\WordchaUniqueFactory;
+namespace Contributte\Wordcha\DI;
+
+use Contributte\Wordcha\DataSource\NumericDataSource;
+use Contributte\Wordcha\DataSource\QuestionDataSource;
+use Contributte\Wordcha\WordchaFactory;
+use Contributte\Wordcha\WordchaUniqueFactory;
 use Nette\DI\CompilerExtension;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpLiteral;
@@ -13,16 +14,16 @@ use Nette\Utils\AssertionException;
 /**
  * Class WordchaExtension
  *
- * @package Minetro\Wordcha\DI
+ * @package Contributte\Wordcha\DI
  */
 final class WordchaExtension extends CompilerExtension
 {
 
 	/** @var array */
 	private $defaults = [
-		'auto'       => TRUE,
+		'auto' => TRUE,
 		'datasource' => 'numeric',
-		'questions'  => [],
+		'questions' => [],
 	];
 
 	/** @var array */
@@ -53,7 +54,7 @@ final class WordchaExtension extends CompilerExtension
 	public function loadConfiguration()
 	{
 		$builder = $this->getContainerBuilder();
-		$config  = $this->validateConfig($this->defaults);
+		$config = $this->validateConfig($this->defaults);
 
 		// Validate dataSource
 		if (!in_array($config['datasource'], self::$dataSources)) {

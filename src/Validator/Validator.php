@@ -1,11 +1,11 @@
 <?php
 
-namespace Minetro\Wordcha\Validator;
+namespace Contributte\Wordcha\Validator;
 
 /**
  * Interface Validator
  *
- * @package Minetro\Wordcha\Validator
+ * @package Contributte\Wordcha\Validator
  */
 interface Validator
 {

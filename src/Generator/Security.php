@@ -1,11 +1,11 @@
 <?php
 
-namespace Minetro\Wordcha\Generator;
+namespace Contributte\Wordcha\Generator;
 
 /**
  * Class Security
  *
- * @package Minetro\Wordcha\Generator
+ * @package Contributte\Wordcha\Generator
  */
 class Security
 {
@@ -25,7 +25,7 @@ class Security
 	public function __construct($question, $hash)
 	{
 		$this->question = $question;
-		$this->hash     = $hash;
+		$this->hash = $hash;
 	}
 
 	/**

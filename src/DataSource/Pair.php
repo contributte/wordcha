@@ -1,11 +1,11 @@
 <?php
 
-namespace Minetro\Wordcha\DataSource;
+namespace Contributte\Wordcha\DataSource;
 
 /**
  * Class Pair
  *
- * @package Minetro\Wordcha\DataSource
+ * @package Contributte\Wordcha\DataSource
  */
 class Pair
 {
@@ -25,7 +25,7 @@ class Pair
 	public function __construct($question, $answer)
 	{
 		$this->question = $question;
-		$this->answer   = $answer;
+		$this->answer = $answer;
 	}
 
 	/**

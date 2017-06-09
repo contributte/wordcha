@@ -1,11 +1,11 @@
 <?php
 
-namespace Minetro\Wordcha\Generator;
+namespace Contributte\Wordcha\Generator;
 
 /**
  * Interface Generator
  *
- * @package Minetro\Wordcha\Generator
+ * @package Contributte\Wordcha\Generator
  */
 interface Generator
 {

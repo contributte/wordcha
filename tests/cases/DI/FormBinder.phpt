@@ -4,12 +4,12 @@
  * Test: DI\FormBinder
  */
 
-use Minetro\Wordcha\DI\FormBinder;
-use Minetro\Wordcha\Factory;
-use Minetro\Wordcha\Form\WordchaContainer;
-use Minetro\Wordcha\Generator\Generator;
-use Minetro\Wordcha\Generator\Security;
-use Minetro\Wordcha\Validator\Validator;
+use Contributte\Wordcha\DI\FormBinder;
+use Contributte\Wordcha\Factory;
+use Contributte\Wordcha\Form\WordchaContainer;
+use Contributte\Wordcha\Generator\Generator;
+use Contributte\Wordcha\Generator\Security;
+use Contributte\Wordcha\Validator\Validator;
 use Nette\Forms\Controls\HiddenField;
 use Nette\Forms\Controls\TextInput;
 use Nette\Forms\Form;
@@ -18,7 +18,7 @@ use Tester\Assert;
 require_once __DIR__ . '/../../bootstrap.php';
 
 test(function () {
-	$hash      = '12345';
+	$hash = '12345';
 	$validator = Mockery::mock(Validator::class);
 
 	$generator = Mockery::mock(Generator::class)
@@ -38,7 +38,7 @@ test(function () {
 
 	FormBinder::bind($factory);
 
-	$form    = new Form();
+	$form = new Form();
 	$captcha = $form->addWordcha();
 
 	Assert::type(WordchaContainer::class, $captcha);

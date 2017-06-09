@@ -1,15 +1,15 @@
 <?php
 
-namespace Minetro\Wordcha\DI;
+namespace Contributte\Wordcha\DI;
 
-use Minetro\Wordcha\Factory;
-use Minetro\Wordcha\Form\WordchaContainer;
+use Contributte\Wordcha\Factory;
+use Contributte\Wordcha\Form\WordchaContainer;
 use Nette\Forms\Container;
 
 /**
  * Class FormBinder
  *
- * @package Minetro\Wordcha\DI
+ * @package Contributte\Wordcha\DI
  */
 final class FormBinder
 {
@@ -22,11 +22,11 @@ final class FormBinder
 	public static function bind(Factory $factory)
 	{
 		Container::extensionMethod(
-            'addWordcha',
+			'addWordcha',
 			function ($container, $name = 'captcha', $label = 'Captcha') use ($factory) {
 				return $container[$name] = new WordchaContainer($factory);
-            }
-        );
+			}
+		);
 	}
 
 }

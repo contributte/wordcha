@@ -1,14 +1,14 @@
 <?php
 
-namespace Minetro\Wordcha;
+namespace Contributte\Wordcha;
 
-use Minetro\Wordcha\Generator\Generator;
-use Minetro\Wordcha\Validator\Validator;
+use Contributte\Wordcha\Generator\Generator;
+use Contributte\Wordcha\Validator\Validator;
 
 /**
  * Interface Factory
  *
- * @package Minetro\Wordcha
+ * @package Contributte\Wordcha
  */
 interface Factory
 {

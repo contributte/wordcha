@@ -1,89 +1,42 @@
 # Wordcha
 
-[![Build Status](https://img.shields.io/travis/minetro/wordcha.svg?style=flat-square)](https://travis-ci.org/minetro/wordcha)
-[![Code coverage](https://img.shields.io/coveralls/minetro/wordcha.svg?style=flat-square)](https://coveralls.io/r/minetro/wordcha)
-[![Downloads this Month](https://img.shields.io/packagist/dm/minetro/wordcha.svg?style=flat-square)](https://packagist.org/packages/minetro/wordcha)
-[![Downloads total](https://img.shields.io/packagist/dt/minetro/wordcha.svg?style=flat-square)](https://packagist.org/packages/minetro/wordcha)
-[![Latest stable](https://img.shields.io/packagist/v/minetro/wordcha.svg?style=flat-square)](https://packagist.org/packages/minetro/wordcha)
-[![HHVM Status](https://img.shields.io/hhvm/minetro/wordcha.svg?style=flat-square)](http://hhvm.h4cc.de/package/minetro/wordcha)
+:exclamation: Question-based captcha for Nette Framework / Forms.
 
-Numeric\question captcha for Nette Framework / Forms.
+-----
+
+[![Build Status](https://img.shields.io/travis/contributte/wordcha.svg?style=flat-square)](https://travis-ci.org/contributte/wordcha)
+[![Code coverage](https://img.shields.io/coveralls/contributte/wordcha.svg?style=flat-square)](https://coveralls.io/r/contributte/wordcha)
+[![HHVM Status](https://img.shields.io/hhvm/contributte/wordcha.svg?style=flat-square)](http://hhvm.h4cc.de/package/contributte/wordcha)
+[![Licence](https://img.shields.io/packagist/l/contributte/wordcha.svg?style=flat-square)](https://packagist.org/packages/contributte/wordcha)
+
+[![Downloads this Month](https://img.shields.io/packagist/dm/contributte/wordcha.svg?style=flat-square)](https://packagist.org/packages/contributte/wordcha)
+[![Downloads total](https://img.shields.io/packagist/dt/contributte/wordcha.svg?style=flat-square)](https://packagist.org/packages/contributte/wordcha)
+[![Latest stable](https://img.shields.io/packagist/v/contributte/wordcha.svg?style=flat-square)](https://packagist.org/packages/contributte/wordcha)
+[![Latest unstable](https://img.shields.io/packagist/vpre/contributte/wordcha.svg?style=flat-square)](https://packagist.org/packages/contributte/wordcha)
 
 ## Discussion / Help
 
-[![Join the chat](https://img.shields.io/gitter/room/minetro/nette.svg?style=flat-square)](https://gitter.im/minetro/nette?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat](https://img.shields.io/gitter/room/contributte/contributte.svg?style=flat-square)](http://bit.ly/ctteg)
 
 ## Install
 
 ```sh
-composer require minetro/wordcha
+composer require contributte/wordcha
 ```
 
-## Extension
+## Versions
 
-```yaml
-extensions:
-	wordcha: Minetro\Wordcha\DI\WordchaExtension
-```
+| State       | Version | Branch   | PHP      |
+|-------------|---------|----------|----------|
+| development | `^0.1`  | `master` | `>= 5.6` |
 
-## DataSource
+## Overview
 
-### Numeric
-
-```yaml
-wordcha:
-	datasource: numeric
-```
-
-### Questions
-
-```yaml
-wordcha:
-	datasource: questions
-	questions: 
-		"Question a?": "a"
-		"Question b?": "b"
-```
-
-## Usage
-
-![captcha](https://raw.githubusercontent.com/minetro/wordcha/master/wordcha.png)
-
-### Form component
-
-```php
-use Nette\Application\UI\Form;
-
-protected function createComponentForm()
-{
-    $form = new Form();
-
-    $form->addWordcha('wordcha')
-        ->getQuestion()
-        ->setRequired('Please answer antispam question');
-
-    $form->addSubmit('send');
-
-    $form->onValidate[] = function (Form $form) {
-        if ($form['wordcha']->verify() !== TRUE) {
-            $form->addError('Are you robot?');
-        }
-    };
-
-    $form->onSuccess[] = function (Form $form) {
-        dump($form['wordcha']);
-    };
-
-    return $form;
-}
-```
-
-### Rendering
-
-```
-{control form}
-````
+- [Usage - how to register](https://github.com/contributte/console/blob/master/.docs/README.md#usage)
+- [Extension - how to configure](https://github.com/contributte/console/blob/master/.docs/README.md#configuration)
+- [Form - setup nette form](https://github.com/contributte/console/blob/master/.docs/README.md#form)
+- [Example - real preview](https://github.com/contributte/console/blob/master/.docs/README.md#example)
 
 -----
 
-Thanks for testing, reporting and contributing.
+Thank you for testing, reporting and contributing.

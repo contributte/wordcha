@@ -1,13 +1,13 @@
 <?php
 
-namespace Minetro\Wordcha\Generator;
+namespace Contributte\Wordcha\Generator;
 
-use Minetro\Wordcha\DataSource\DataSource;
+use Contributte\Wordcha\DataSource\DataSource;
 
 /**
  * Class WordchaGenerator
  *
- * @package Minetro\Wordcha\Generator
+ * @package Contributte\Wordcha\Generator
  */
 class WordchaGenerator implements Generator
 {
@@ -43,8 +43,8 @@ class WordchaGenerator implements Generator
 	 */
 	public function generate()
 	{
-		$pair     = $this->dataSource->get();
-		$hash     = $this->hash($pair->getAnswer());
+		$pair = $this->dataSource->get();
+		$hash = $this->hash($pair->getAnswer());
 		$question = $pair->getQuestion();
 
 		$security = new Security($question, $hash);

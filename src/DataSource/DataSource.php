@@ -1,11 +1,11 @@
 <?php
 
-namespace Minetro\Wordcha\DataSource;
+namespace Contributte\Wordcha\DataSource;
 
 /**
  * Interface DataSource
  *
- * @package Minetro\Wordcha\DataSource
+ * @package Contributte\Wordcha\DataSource
  */
 interface DataSource
 {

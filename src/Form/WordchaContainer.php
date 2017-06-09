@@ -1,10 +1,10 @@
 <?php
 
-namespace Minetro\Wordcha\Form;
+namespace Contributte\Wordcha\Form;
 
-use Minetro\Wordcha\Factory;
-use Minetro\Wordcha\Generator\Generator;
-use Minetro\Wordcha\Validator\Validator;
+use Contributte\Wordcha\Factory;
+use Contributte\Wordcha\Generator\Generator;
+use Contributte\Wordcha\Validator\Validator;
 use Nette\Forms\Container;
 use Nette\Forms\Controls\HiddenField;
 use Nette\Forms\Controls\TextInput;
@@ -13,7 +13,7 @@ use Nette\Utils\Strings;
 /**
  * Class WordchaContainer
  *
- * @package Minetro\Wordcha\Form
+ * @package Contributte\Wordcha\Form
  */
 class WordchaContainer extends Container
 {
@@ -38,11 +38,13 @@ class WordchaContainer extends Container
 
 		$security = $this->generator->generate();
 
-		$textInput   = new TextInput($security->getQuestion());
+		$textInput = new TextInput($security->getQuestion());
+		$textInput->setRequired(TRUE);
+
 		$hiddenField = new HiddenField($security->getHash());
 
 		$this['question'] = $textInput;
-		$this['hash']     = $hiddenField;
+		$this['hash'] = $hiddenField;
 	}
 
 	/**
@@ -66,8 +68,8 @@ class WordchaContainer extends Container
 	 */
 	public function verify()
 	{
-		$form   = $this->getForm(TRUE);
-		$hash   = $form->getHttpData($form::DATA_LINE, $this->getHash()->getHtmlName());
+		$form = $this->getForm(TRUE);
+		$hash = $form->getHttpData($form::DATA_LINE, $this->getHash()->getHtmlName());
 		$answer = $form->getHttpData($form::DATA_LINE, $this->getQuestion()->getHtmlName());
 		$answer = Strings::lower($answer);
 

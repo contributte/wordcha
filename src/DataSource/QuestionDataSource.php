@@ -1,6 +1,6 @@
 <?php
 
-namespace Minetro\Wordcha\DataSource;
+namespace Contributte\Wordcha\DataSource;
 
 use Exception;
 use Nette\InvalidArgumentException;
@@ -8,7 +8,7 @@ use Nette\InvalidArgumentException;
 /**
  * Class QuestionDataSource
  *
- * @package Minetro\Wordcha\DataSource
+ * @package Contributte\Wordcha\DataSource
  */
 class QuestionDataSource implements DataSource
 {
@@ -36,9 +36,9 @@ class QuestionDataSource implements DataSource
 			throw new InvalidArgumentException('Questions are empty');
 		}
 
-		$key    = array_rand($this->questions);
+		$key = array_rand($this->questions);
 		$answer = $this->questions[$key];
-		$pair   = new Pair($key, $answer);
+		$pair = new Pair($key, $answer);
 
 		return $pair;
 	}

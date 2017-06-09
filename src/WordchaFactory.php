@@ -1,15 +1,15 @@
 <?php
 
-namespace Minetro\Wordcha;
+namespace Contributte\Wordcha;
 
-use Minetro\Wordcha\DataSource\DataSource;
-use Minetro\Wordcha\Generator\WordchaGenerator;
-use Minetro\Wordcha\Validator\WordchaValidator;
+use Contributte\Wordcha\DataSource\DataSource;
+use Contributte\Wordcha\Generator\WordchaGenerator;
+use Contributte\Wordcha\Validator\WordchaValidator;
 
 /**
  * Class WordchaFactory
  *
- * @package Minetro\Wordcha
+ * @package Contributte\Wordcha
  */
 class WordchaFactory implements Factory
 {

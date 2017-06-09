@@ -1,11 +1,11 @@
 <?php
 
-namespace Minetro\Wordcha\DataSource;
+namespace Contributte\Wordcha\DataSource;
 
 /**
  * Class NumericDataSource
  *
- * @package Minetro\Wordcha\DataSource
+ * @package Contributte\Wordcha\DataSource
  */
 class NumericDataSource implements DataSource
 {
@@ -19,7 +19,7 @@ class NumericDataSource implements DataSource
 		$numberB = $this->generateNumber();
 
 		$question = sprintf('%s + %s', $numberA, $numberB);
-		$answer   = $numberA + $numberB;
+		$answer = $numberA + $numberB;
 
 		$pair = new Pair($question, $answer);
 
