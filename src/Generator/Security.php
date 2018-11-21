@@ -1,12 +1,7 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Wordcha\Generator;
 
-/**
- * Class Security
- *
- * @package Contributte\Wordcha\Generator
- */
 class Security
 {
 
@@ -16,30 +11,18 @@ class Security
 	/** @var string */
 	private $hash;
 
-	/**
-	 * Security constructor.
-	 *
-	 * @param string $question
-	 * @param string $hash
-	 */
-	public function __construct($question, $hash)
+	public function __construct(string $question, string $hash)
 	{
 		$this->question = $question;
 		$this->hash = $hash;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getQuestion()
+	public function getQuestion(): string
 	{
 		return $this->question;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getHash()
+	public function getHash(): string
 	{
 		return $this->hash;
 	}

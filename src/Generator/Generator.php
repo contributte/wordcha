@@ -1,25 +1,12 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Wordcha\Generator;
 
-/**
- * Interface Generator
- *
- * @package Contributte\Wordcha\Generator
- */
 interface Generator
 {
 
-	/**
-	 * @return Security
-	 */
-	public function generate();
+	public function generate(): Security;
 
-	/**
-	 * @param string $answer
-	 *
-	 * @return string
-	 */
-	public function hash($answer);
+	public function hash(string $answer): string;
 
 }

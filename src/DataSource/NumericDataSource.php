@@ -1,19 +1,11 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Wordcha\DataSource;
 
-/**
- * Class NumericDataSource
- *
- * @package Contributte\Wordcha\DataSource
- */
 class NumericDataSource implements DataSource
 {
 
-	/**
-	 * @return Pair
-	 */
-	public function get()
+	public function get(): Pair
 	{
 		$numberA = $this->generateNumber();
 		$numberB = $this->generateNumber();
@@ -21,17 +13,12 @@ class NumericDataSource implements DataSource
 		$question = sprintf('%s + %s', $numberA, $numberB);
 		$answer = $numberA + $numberB;
 
-		$pair = new Pair($question, $answer);
-
-		return $pair;
+		return new Pair($question, (string) $answer);
 	}
 
-	/**
-	 * @return int
-	 */
-	private function generateNumber()
+	private function generateNumber(): int
 	{
-		return rand(0, 10);
+		return random_int(0, 10);
 	}
 
 }

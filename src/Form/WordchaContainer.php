@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Wordcha\Form;
 
@@ -10,11 +10,6 @@ use Nette\Forms\Controls\HiddenField;
 use Nette\Forms\Controls\TextInput;
 use Nette\Utils\Strings;
 
-/**
- * Class WordchaContainer
- *
- * @package Contributte\Wordcha\Form
- */
 class WordchaContainer extends Container
 {
 
@@ -24,11 +19,6 @@ class WordchaContainer extends Container
 	/** @var Generator */
 	private $generator;
 
-	/**
-	 * WordchaContainer constructor.
-	 *
-	 * @param Factory $factory
-	 */
 	public function __construct(Factory $factory)
 	{
 		parent::__construct();
@@ -39,7 +29,7 @@ class WordchaContainer extends Container
 		$security = $this->generator->generate();
 
 		$textInput = new TextInput($security->getQuestion());
-		$textInput->setRequired(TRUE);
+		$textInput->setRequired(true);
 
 		$hiddenField = new HiddenField($security->getHash());
 
@@ -47,28 +37,19 @@ class WordchaContainer extends Container
 		$this['hash'] = $hiddenField;
 	}
 
-	/**
-	 * @return TextInput
-	 */
-	public function getQuestion()
+	public function getQuestion(): TextInput
 	{
 		return $this['question'];
 	}
 
-	/**
-	 * @return HiddenField
-	 */
-	public function getHash()
+	public function getHash(): HiddenField
 	{
 		return $this['hash'];
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function verify()
+	public function verify(): bool
 	{
-		$form = $this->getForm(TRUE);
+		$form = $this->getForm(true);
 		$hash = $form->getHttpData($form::DATA_LINE, $this->getHash()->getHtmlName());
 		$answer = $form->getHttpData($form::DATA_LINE, $this->getQuestion()->getHtmlName());
 		$answer = Strings::lower($answer);
@@ -76,18 +57,12 @@ class WordchaContainer extends Container
 		return $this->validator->validate($answer, $hash);
 	}
 
-	/**
-	 * @return Validator
-	 */
-	public function getValidator()
+	public function getValidator(): Validator
 	{
 		return $this->validator;
 	}
 
-	/**
-	 * @return Generator
-	 */
-	public function getGenerator()
+	public function getGenerator(): Generator
 	{
 		return $this->generator;
 	}

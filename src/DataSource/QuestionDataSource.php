@@ -1,25 +1,18 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Wordcha\DataSource;
 
 use Exception;
 use Nette\InvalidArgumentException;
 
-/**
- * Class QuestionDataSource
- *
- * @package Contributte\Wordcha\DataSource
- */
 class QuestionDataSource implements DataSource
 {
 
-	/** @var array */
+	/** @var string[] Pairs of question:answer */
 	private $questions;
 
 	/**
-	 * QuestionDataSource constructor.
-	 *
-	 * @param array $questions
+	 * @param string[] $questions
 	 */
 	public function __construct(array $questions)
 	{
@@ -27,20 +20,17 @@ class QuestionDataSource implements DataSource
 	}
 
 	/**
-	 * @return Pair
 	 * @throws Exception
 	 */
-	public function get()
+	public function get(): Pair
 	{
-		if (empty($this->questions)) {
+		if ($this->questions === []) {
 			throw new InvalidArgumentException('Questions are empty');
 		}
 
-		$key = array_rand($this->questions);
-		$answer = $this->questions[$key];
-		$pair = new Pair($key, $answer);
-
-		return $pair;
+		$question = array_rand($this->questions);
+		$answer = $this->questions[$question];
+		return new Pair($question, $answer);
 	}
 
 }
