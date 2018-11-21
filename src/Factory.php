@@ -1,26 +1,15 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Wordcha;
 
 use Contributte\Wordcha\Generator\Generator;
 use Contributte\Wordcha\Validator\Validator;
 
-/**
- * Interface Factory
- *
- * @package Contributte\Wordcha
- */
 interface Factory
 {
 
-	/**
-	 * @return Validator
-	 */
-	public function createValidator();
+	public function createValidator(): Validator;
 
-	/**
-	 * @return Generator
-	 */
-	public function createGenerator();
+	public function createGenerator(): Generator;
 
 }

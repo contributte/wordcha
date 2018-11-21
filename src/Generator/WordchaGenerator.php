@@ -1,65 +1,40 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Wordcha\Generator;
 
 use Contributte\Wordcha\DataSource\DataSource;
 
-/**
- * Class WordchaGenerator
- *
- * @package Contributte\Wordcha\Generator
- */
 class WordchaGenerator implements Generator
 {
 
 	/** @var DataSource */
 	private $dataSource;
 
-	/** @var string */
+	/** @var string|null */
 	private $uniqueKey;
 
-	/**
-	 * WordchaGenerator constructor.
-	 *
-	 * @param DataSource $dataSource
-	 */
 	public function __construct(DataSource $dataSource)
 	{
 		$this->dataSource = $dataSource;
 	}
 
-	/**
-	 * @param string $uniqueKey
-	 *
-	 * @return void
-	 */
-	public function setUniqueKey($uniqueKey)
+	public function setUniqueKey(string $uniqueKey): void
 	{
 		$this->uniqueKey = $uniqueKey;
 	}
 
-	/**
-	 * @return Security
-	 */
-	public function generate()
+	public function generate(): Security
 	{
 		$pair = $this->dataSource->get();
 		$hash = $this->hash($pair->getAnswer());
 		$question = $pair->getQuestion();
 
-		$security = new Security($question, $hash);
-
-		return $security;
+		return new Security($question, $hash);
 	}
 
-	/**
-	 * @param string $answer
-	 *
-	 * @return string
-	 */
-	public function hash($answer)
+	public function hash(string $answer): string
 	{
-		if ($this->uniqueKey) {
+		if ($this->uniqueKey !== null) {
 			$answer .= $this->uniqueKey;
 		}
 

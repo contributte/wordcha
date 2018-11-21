@@ -1,18 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Wordcha\DataSource;
 
-/**
- * Interface DataSource
- *
- * @package Contributte\Wordcha\DataSource
- */
 interface DataSource
 {
 
-	/**
-	 * @return Pair
-	 */
-	public function get();
+	public function get(): Pair;
 
 }

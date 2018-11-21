@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * Test: DI\FormBinder
@@ -17,7 +17,7 @@ use Tester\Assert;
 
 require_once __DIR__ . '/../../bootstrap.php';
 
-test(function () {
+test(function (): void {
 	$hash = '12345';
 	$validator = Mockery::mock(Validator::class);
 

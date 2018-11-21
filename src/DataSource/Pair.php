@@ -1,12 +1,7 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Wordcha\DataSource;
 
-/**
- * Class Pair
- *
- * @package Contributte\Wordcha\DataSource
- */
 class Pair
 {
 
@@ -16,30 +11,18 @@ class Pair
 	/** @var string */
 	private $answer;
 
-	/**
-	 * Pair constructor.
-	 *
-	 * @param string $question
-	 * @param string $answer
-	 */
-	public function __construct($question, $answer)
+	public function __construct(string $question, string $answer)
 	{
 		$this->question = $question;
 		$this->answer = $answer;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getQuestion()
+	public function getQuestion(): string
 	{
 		return $this->question;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getAnswer()
+	public function getAnswer(): string
 	{
 		return $this->answer;
 	}

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * Test: Form\WordchaContainer
@@ -15,7 +15,7 @@ use Tester\Assert;
 
 require_once __DIR__ . '/../../bootstrap.php';
 
-test(function () {
+test(function (): void {
 	$hash = '12345';
 	$validator = Mockery::mock(Validator::class);
 	$generator = Mockery::mock(Generator::class)
@@ -41,11 +41,11 @@ test(function () {
 	Assert::equal($hash, $captcha['hash']->getValue());
 });
 
-test(function () {
+test(function (): void {
 	$hash = '12345';
 	$validator = Mockery::mock(Validator::class)
 		->shouldReceive('validate')
-		->andReturn(TRUE)
+		->andReturn(true)
 		->getMock();
 
 	$generator = Mockery::mock(Generator::class)
@@ -69,12 +69,12 @@ test(function () {
 	Assert::true($validator->validate('foo', 'bar'));
 });
 
-test(function () {
+test(function (): void {
 	$hash = '12345';
 
 	$validator = Mockery::mock(Validator::class)
 		->shouldReceive('validate')
-		->andReturn(FALSE)
+		->andReturn(false)
 		->getMock();
 
 	$generator = Mockery::mock(Generator::class)

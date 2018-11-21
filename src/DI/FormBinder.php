@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Wordcha\DI;
 
@@ -6,24 +6,14 @@ use Contributte\Wordcha\Factory;
 use Contributte\Wordcha\Form\WordchaContainer;
 use Nette\Forms\Container;
 
-/**
- * Class FormBinder
- *
- * @package Contributte\Wordcha\DI
- */
 final class FormBinder
 {
 
-	/**
-	 * @param Factory $factory
-	 *
-	 * @return void
-	 */
-	public static function bind(Factory $factory)
+	public static function bind(Factory $factory): void
 	{
 		Container::extensionMethod(
 			'addWordcha',
-			function ($container, $name = 'captcha', $label = 'Captcha') use ($factory) {
+			function (Container $container, string $name = 'captcha', string $label = 'Captcha') use ($factory): WordchaContainer {
 				return $container[$name] = new WordchaContainer($factory);
 			}
 		);
