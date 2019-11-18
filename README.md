@@ -23,10 +23,10 @@ Question-based captcha for Nette Framework / Forms.
 
 ## Versions
 
-| State       | Version | Branch   | PHP      |
-|-------------|---------|----------|----------|
-| stable      | `^0.2`  | `master` | `>= 7.1` |
-| stable      | `^0.1`  | `master` | `>= 5.6` |
+| State       | Version | Branch   | PHP     |
+|-------------|---------|----------|---------|
+| stable      | `^0.2`  | `master` | `^7.2`  |
+| stable      | `^0.1`  | `master` | `>=5.6` |
 
 ## Maintainers
 
