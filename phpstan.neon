@@ -1,9 +1,3 @@
-includes:
-	- temp/phpstan/vendor/phpstan/phpstan-deprecation-rules/rules.neon
-	- temp/phpstan/vendor/phpstan/phpstan-nette/extension.neon
-	- temp/phpstan/vendor/phpstan/phpstan-nette/rules.neon
-	- temp/phpstan/vendor/phpstan/phpstan-strict-rules/rules.neon
-
 parameters:
 	ignoreErrors:
 		# false positives
@@ -12,3 +6,5 @@ parameters:
 		- '#^Method Contributte\\Wordcha\\Form\\WordchaContainer\:\:getHash\(\) should return Nette\\Forms\\Controls\\HiddenField but returns Nette\\ComponentModel\\IComponent\.$#'
 		- '#^Cannot access constant DATA_LINE on Nette\\Forms\\Form\|null\.$#'
 		- '#^Cannot call method getHttpData\(\) on Nette\\Forms\\Form\|null\.$#'
+		# deprecated
+		- '#^Call to deprecated method extensionMethod\(\) of class Nette\\Forms\\Container(.+)#'
