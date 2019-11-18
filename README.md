@@ -1,8 +1,6 @@
 # Wordcha
 
-:exclamation: Question-based captcha for Nette Framework / Forms.
-
------
+Question-based captcha for Nette Framework / Forms.
 
 [![Build Status](https://img.shields.io/travis/contributte/wordcha.svg?style=flat-square)](https://travis-ci.org/contributte/wordcha)
 [![Code coverage](https://img.shields.io/coveralls/contributte/wordcha.svg?style=flat-square)](https://coveralls.io/r/contributte/wordcha)
@@ -10,17 +8,18 @@
 [![Downloads this Month](https://img.shields.io/packagist/dm/contributte/wordcha.svg?style=flat-square)](https://packagist.org/packages/contributte/wordcha)
 [![Downloads total](https://img.shields.io/packagist/dt/contributte/wordcha.svg?style=flat-square)](https://packagist.org/packages/contributte/wordcha)
 [![Latest stable](https://img.shields.io/packagist/v/contributte/wordcha.svg?style=flat-square)](https://packagist.org/packages/contributte/wordcha)
-[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
+[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat-square)](https://github.com/phpstan/phpstan)
 
 ## Discussion / Help
 
 [![Join the chat](https://img.shields.io/gitter/room/contributte/contributte.svg?style=flat-square)](http://bit.ly/ctteg)
 
-## Install
+## Documentation
 
-```sh
-composer require contributte/wordcha
-```
+- [Setup](.docs/README.md#setup)
+- [Configuration](.docs/README.md#configuration)
+- [Form - setup nette form](.docs/README.md#form)
+- [Example - real preview](.docs/README.md#example)
 
 ## Versions
 
@@ -28,13 +27,6 @@ composer require contributte/wordcha
 |-------------|---------|----------|----------|
 | stable      | `^0.2`  | `master` | `>= 7.1` |
 | stable      | `^0.1`  | `master` | `>= 5.6` |
-
-## Overview
-
-- [Usage - how to register](https://github.com/contributte/wordcha/blob/master/.docs/README.md#usage)
-- [Extension - how to configure](https://github.com/contributte/wordcha/blob/master/.docs/README.md#configuration)
-- [Form - setup nette form](https://github.com/contributte/wordcha/blob/master/.docs/README.md#form)
-- [Example - real preview](https://github.com/contributte/wordcha/blob/master/.docs/README.md#example)
 
 ## Maintainers
 
@@ -65,7 +57,5 @@ composer require contributte/wordcha
     </tr>
   </tbody>
 </table>
-
------
 
 Thank you for testing, reporting and contributing.

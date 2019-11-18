@@ -1,13 +1,23 @@
 # Wordcha
 
+Question-based captcha for Nette Framework / Forms.
+
 ## Content
 
-- [Usage - how to register](#usage)
-- [Extension - how to configure](#configuration)
+- [Setup](#setup)
+- [Configuration](#configuration)
 - [Form - setup nette form](#form)
 - [Example - real preview](#example)
 
-## Usage
+## Setup
+
+Require package
+
+```bash
+composer require contributte/wordcha
+```
+
+Register extension
 
 ```yaml
 extensions:
