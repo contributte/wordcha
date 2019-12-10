@@ -25,6 +25,7 @@ Question-based captcha for Nette Framework / Forms.
 
 | State       | Version | Branch   | PHP     |
 |-------------|---------|----------|---------|
+| dev         | `^0.3`  | `master` | `^7.2`  |
 | stable      | `^0.2`  | `master` | `^7.2`  |
 | stable      | `^0.1`  | `master` | `>=5.6` |
 
