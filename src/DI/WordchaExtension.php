@@ -41,7 +41,7 @@ final class WordchaExtension extends CompilerExtension
 	public function getConfigSchema(): Schema
 	{
 		return Expect::structure([
-			'auto' => Expect::string()->required(),
+			'auto' => Expect::bool()->default(true),
 			'datasource' => Expect::anyOf(...self::DATASOURCES)->default(self::DATASOURCE_NUMERIC),
 			'questions' => Expect::listOf('string'),
 		]);
