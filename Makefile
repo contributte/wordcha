@@ -6,10 +6,7 @@ all:
 
 # QA
 
-qa: lint phpstan cs ## Check code quality - coding style and static analysis
-
-lint: ## Check PHP files syntax
-	vendor/bin/linter src tests
+qa: phpstan cs ## Check code quality - coding style and static analysis
 
 cs: ## Check PHP files coding style
 	vendor/bin/codesniffer src tests

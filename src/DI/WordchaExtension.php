@@ -11,22 +11,23 @@ use Contributte\Wordcha\WordchaUniqueFactory;
 use Nette\DI\CompilerExtension;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpLiteral;
+use Nette\Schema\Expect;
+use Nette\Schema\Schema;
 use Nette\Utils\AssertionException;
+use stdClass;
 
+/**
+ * @property-read stdClass $config
+ */
 final class WordchaExtension extends CompilerExtension
 {
 
-	/** @var string[] */
-	private static $dataSources = [
-		'numeric',
-		'questions',
-	];
+	public const DATASOURCE_NUMERIC = 'numeric';
+	public const DATASOURCE_QUESTIONS = 'questions';
 
-	/** @var mixed[] */
-	private $defaults = [
-		'auto' => true,
-		'datasource' => 'numeric',
-		'questions' => [],
+	public const DATASOURCES = [
+		self::DATASOURCE_NUMERIC,
+		self::DATASOURCE_QUESTIONS,
 	];
 
 	/** @var bool */
@@ -37,6 +38,15 @@ final class WordchaExtension extends CompilerExtension
 		$this->debugMode = $debugMode;
 	}
 
+	public function getConfigSchema(): Schema
+	{
+		return Expect::structure([
+			'auto' => Expect::string()->required(),
+			'datasource' => Expect::anyOf(...self::DATASOURCES)->default(self::DATASOURCE_NUMERIC),
+			'questions' => Expect::listOf('string'),
+		]);
+	}
+
 	/**
 	 * Register services
 	 *
@@ -45,23 +55,15 @@ final class WordchaExtension extends CompilerExtension
 	public function loadConfiguration(): void
 	{
 		$builder = $this->getContainerBuilder();
-		$config = $this->validateConfig($this->defaults);
-
-		// Validate dataSource
-		if (!in_array($config['datasource'], self::$dataSources, true)) {
-			throw new AssertionException(
-				'DataSource is not valid. Valid datasources are ' . implode(', ', self::$dataSources)
-			);
-		}
 
 		// Add datasource
 		$dataSource = $builder->addDefinition($this->prefix('dataSource'))
 			->setType(DataSource::class);
 
-		if ($config['datasource'] === 'numeric') {
+		if ($this->config->datasource === self::DATASOURCE_NUMERIC) {
 			$dataSource->setFactory(NumericDataSource::class);
-		} elseif ($config['datasource'] === 'questions') {
-			$dataSource->setFactory(QuestionDataSource::class, [$config['questions']]);
+		} elseif ($this->config->datasource === self::DATASOURCE_QUESTIONS) {
+			$dataSource->setFactory(QuestionDataSource::class, [$this->config->questions]);
 		}
 
 		// Add factory
@@ -77,9 +79,7 @@ final class WordchaExtension extends CompilerExtension
 
 	public function afterCompile(ClassType $class): void
 	{
-		$config = $this->validateConfig($this->defaults);
-
-		if ($config['auto'] === true) {
+		if ($this->config->auto === true) {
 
 			$method = $class->getMethod('initialize');
 			$method->addBody(

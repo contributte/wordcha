@@ -21,8 +21,6 @@ class WordchaContainer extends Container
 
 	public function __construct(Factory $factory)
 	{
-		parent::__construct();
-
 		$this->validator = $factory->createValidator();
 		$this->generator = $factory->createGenerator();
 
