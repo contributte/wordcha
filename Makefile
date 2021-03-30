@@ -22,5 +22,5 @@ phpstan: ## Analyse code with PHPStan
 tests: ## Run all tests
 	vendor/bin/tester -s -p php --colors 1 -C tests/cases
 
-coverage: ## Generate code coverage in XML format
+coverage-clover: ## Generate code coverage in XML format
 	vendor/bin/tester -s -p phpdbg --colors 1 -C --coverage ./coverage.xml --coverage-src ./src tests/cases
