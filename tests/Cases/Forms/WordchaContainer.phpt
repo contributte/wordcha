@@ -1,9 +1,6 @@
 <?php declare(strict_types = 1);
 
-/**
- * Test: Form\WordchaContainer
- */
-
+use Contributte\Tester\Toolkit;
 use Contributte\Wordcha\Factory;
 use Contributte\Wordcha\Form\WordchaContainer;
 use Contributte\Wordcha\Generator\Generator;
@@ -15,7 +12,7 @@ use Tester\Assert;
 
 require_once __DIR__ . '/../../bootstrap.php';
 
-test(function (): void {
+Toolkit::test(function (): void {
 	$hash = '12345';
 	$validator = Mockery::mock(Validator::class);
 	$generator = Mockery::mock(Generator::class)
@@ -41,7 +38,7 @@ test(function (): void {
 	Assert::equal($hash, $captcha['hash']->getValue());
 });
 
-test(function (): void {
+Toolkit::test(function (): void {
 	$hash = '12345';
 	$validator = Mockery::mock(Validator::class)
 		->shouldReceive('validate')
@@ -69,7 +66,7 @@ test(function (): void {
 	Assert::true($validator->validate('foo', 'bar'));
 });
 
-test(function (): void {
+Toolkit::test(function (): void {
 	$hash = '12345';
 
 	$validator = Mockery::mock(Validator::class)
