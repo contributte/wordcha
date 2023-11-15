@@ -20,7 +20,7 @@ Website ðŸš€ <a href="https://contributte.org">contributte.org</a> | Contact ðŸ‘
 
 ## Usage
 
-To install the latest version of `contributte/wordcha` use [Composer](https://getcomposer.org).
+To install the latest version of `contributte/wordcha` use [Composer](https://bit.ly/xcomposer).
 
 ```bash
 composer require contributte/wordcha
@@ -39,15 +39,15 @@ For details on how to use this package, check out our [documentation](.docs).
 
 ## Development
 
-See [how to contribute](https://contributte.org/contributing.html) to this package.
+See [how to contribute](https://bit.ly/contributtecontrib) to this package.
 
 This package is currently maintaining by these authors.
 
-<a href="https://github.com/f3l1x">
+<a href="https://bit.ly/f3l1x">
   <img width="80" height="80" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=80">
 </a>
 
 -----
 
-Consider to [support](https://contributte.org/partners.html) **contributte** development team.
+Consider to [support](https://bit.ly/contributtepartner) **contributte** development team.
 Also thank you for using this package.
