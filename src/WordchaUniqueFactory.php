@@ -9,8 +9,7 @@ use Contributte\Wordcha\Generator\WordchaGenerator;
 class WordchaUniqueFactory extends WordchaFactory
 {
 
-	/** @var string */
-	private $uniqueKey;
+	private string $uniqueKey;
 
 	public function __construct(DataSource $dataSource, string $uniqueKey)
 	{

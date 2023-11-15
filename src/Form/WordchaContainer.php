@@ -8,16 +8,15 @@ use Contributte\Wordcha\Validator\Validator;
 use Nette\Forms\Container;
 use Nette\Forms\Controls\HiddenField;
 use Nette\Forms\Controls\TextInput;
+use Nette\Forms\Form;
 use Nette\Utils\Strings;
 
 class WordchaContainer extends Container
 {
 
-	/** @var Validator */
-	private $validator;
+	private Validator $validator;
 
-	/** @var Generator */
-	private $generator;
+	private Generator $generator;
 
 	public function __construct(Factory $factory)
 	{
@@ -37,19 +36,31 @@ class WordchaContainer extends Container
 
 	public function getQuestion(): TextInput
 	{
-		return $this['question'];
+		$control = $this->getComponent('question');
+		assert($control instanceof TextInput);
+
+		return $control;
 	}
 
 	public function getHash(): HiddenField
 	{
-		return $this['hash'];
+		$control = $this->getComponent('hash');
+		assert($control instanceof HiddenField);
+
+		return $control;
 	}
 
 	public function verify(): bool
 	{
-		$form = $this->getForm(true);
-		$hash = $form->getHttpData($form::DATA_LINE, $this->getHash()->getHtmlName());
-		$answer = $form->getHttpData($form::DATA_LINE, $this->getQuestion()->getHtmlName());
+		/** @var Form $form */
+		$form = $this->getForm();
+
+		/** @var string $hash */
+		$hash = $form->getHttpData(Form::DataLine, $this->getHash()->getHtmlName());
+
+		/** @var string $answer */
+		$answer = $form->getHttpData(Form::DataLine, $this->getQuestion()->getHtmlName());
+
 		$answer = Strings::lower($answer);
 
 		return $this->validator->validate($answer, $hash);

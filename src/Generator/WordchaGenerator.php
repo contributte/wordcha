@@ -7,11 +7,9 @@ use Contributte\Wordcha\DataSource\DataSource;
 class WordchaGenerator implements Generator
 {
 
-	/** @var DataSource */
-	private $dataSource;
+	private DataSource $dataSource;
 
-	/** @var string|null */
-	private $uniqueKey;
+	private ?string $uniqueKey = null;
 
 	public function __construct(DataSource $dataSource)
 	{

@@ -13,9 +13,7 @@ final class FormBinder
 	{
 		Container::extensionMethod(
 			'addWordcha',
-			function (Container $container, string $name = 'captcha', string $label = 'Captcha') use ($factory): WordchaContainer {
-				return $container[$name] = new WordchaContainer($factory);
-			}
+			fn (Container $container, string $name = 'captcha', string $label = 'Captcha'): WordchaContainer => $container[$name] = new WordchaContainer($factory) // @phpcs:ignore
 		);
 	}
 

@@ -8,11 +8,11 @@ use Nette\InvalidArgumentException;
 class QuestionDataSource implements DataSource
 {
 
-	/** @var string[] Pairs of question:answer */
-	private $questions;
+	/** @var array<string, string> Pairs of question:answer */
+	private array $questions;
 
 	/**
-	 * @param string[] $questions
+	 * @param array<string, string> $questions
 	 */
 	public function __construct(array $questions)
 	{
@@ -30,6 +30,7 @@ class QuestionDataSource implements DataSource
 
 		$question = array_rand($this->questions);
 		$answer = $this->questions[$question];
+
 		return new Pair($question, $answer);
 	}
 

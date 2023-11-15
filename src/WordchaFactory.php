@@ -11,8 +11,7 @@ use Contributte\Wordcha\Validator\WordchaValidator;
 class WordchaFactory implements Factory
 {
 
-	/** @var DataSource */
-	private $dataSource;
+	private DataSource $dataSource;
 
 	public function __construct(DataSource $dataSource)
 	{

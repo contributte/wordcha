@@ -5,11 +5,9 @@ namespace Contributte\Wordcha\DataSource;
 class Pair
 {
 
-	/** @var string */
-	private $question;
+	private string $question;
 
-	/** @var string */
-	private $answer;
+	private string $answer;
 
 	public function __construct(string $question, string $answer)
 	{

@@ -5,11 +5,9 @@ namespace Contributte\Wordcha\Generator;
 class Security
 {
 
-	/** @var string */
-	private $question;
+	private string $question;
 
-	/** @var string */
-	private $hash;
+	private string $hash;
 
 	public function __construct(string $question, string $hash)
 	{

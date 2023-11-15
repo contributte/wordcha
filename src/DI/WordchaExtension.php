@@ -10,7 +10,7 @@ use Contributte\Wordcha\WordchaFactory;
 use Contributte\Wordcha\WordchaUniqueFactory;
 use Nette\DI\CompilerExtension;
 use Nette\PhpGenerator\ClassType;
-use Nette\PhpGenerator\PhpLiteral;
+use Nette\PhpGenerator\Literal;
 use Nette\Schema\Expect;
 use Nette\Schema\Schema;
 use Nette\Utils\AssertionException;
@@ -30,8 +30,7 @@ final class WordchaExtension extends CompilerExtension
 		self::DATASOURCE_QUESTIONS,
 	];
 
-	/** @var bool */
-	private $debugMode;
+	private bool $debugMode;
 
 	public function __construct(bool $debugMode = false)
 	{
@@ -85,7 +84,7 @@ final class WordchaExtension extends CompilerExtension
 			$method->addBody(
 				'?::bind($this->getService(?));',
 				[
-					new PhpLiteral(FormBinder::class),
+					new Literal(FormBinder::class),
 					$this->prefix('factory'),
 				]
 			);
