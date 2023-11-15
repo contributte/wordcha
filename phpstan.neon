@@ -1,14 +1,18 @@
 includes:
-	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
-	- vendor/phpstan/phpstan-nette/extension.neon
-	- vendor/phpstan/phpstan-nette/rules.neon
-	- vendor/phpstan/phpstan-strict-rules/rules.neon
+	- vendor/contributte/phpstan/phpstan.neon
 
 parameters:
+	level: 9
+	phpVersion: 80100
+
+	scanDirectories:
+		- src
+
+	fileExtensions:
+		- php
+
+	paths:
+		- src
+		- .docs
+
 	ignoreErrors:
-		# false positives
-		- '#^Parameter \#1 \$question of class Contributte\\Wordcha\\DataSource\\Pair constructor expects string, int\|string given\.$#'
-		- '#^Method Contributte\\Wordcha\\Form\\WordchaContainer\:\:getQuestion\(\) should return Nette\\Forms\\Controls\\TextInput but returns Nette\\ComponentModel\\IComponent\.$#'
-		- '#^Method Contributte\\Wordcha\\Form\\WordchaContainer\:\:getHash\(\) should return Nette\\Forms\\Controls\\HiddenField but returns Nette\\ComponentModel\\IComponent\.$#'
-		- '#^Cannot access constant DATA_LINE on Nette\\Forms\\Form\|null\.$#'
-		- '#^Cannot call method getHttpData\(\) on Nette\\Forms\\Form\|null\.$#'
