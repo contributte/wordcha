@@ -2,8 +2,8 @@
 
 namespace Contributte\Wordcha\DataSource;
 
+use Contributte\Wordcha\Exception\LogicalException;
 use Exception;
-use Nette\InvalidArgumentException;
 
 class QuestionDataSource implements DataSource
 {
@@ -25,7 +25,7 @@ class QuestionDataSource implements DataSource
 	public function get(): Pair
 	{
 		if ($this->questions === []) {
-			throw new InvalidArgumentException('Questions are empty');
+			throw new LogicalException('Questions are empty');
 		}
 
 		$question = array_rand($this->questions);

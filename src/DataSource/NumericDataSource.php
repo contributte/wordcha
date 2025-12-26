@@ -2,7 +2,7 @@
 
 namespace Contributte\Wordcha\DataSource;
 
-use Nette\InvalidArgumentException;
+use Contributte\Wordcha\Exception\LogicalException;
 
 class NumericDataSource implements DataSource
 {
@@ -14,7 +14,7 @@ class NumericDataSource implements DataSource
 	public function __construct(int $min = 0, int $max = 10)
 	{
 		if ($min > $max) {
-			throw new InvalidArgumentException(sprintf('Min (%d) must be less than or equal to max (%d)', $min, $max));
+			throw new LogicalException(sprintf('Min (%d) must be less than or equal to max (%d)', $min, $max));
 		}
 
 		$this->min = $min;

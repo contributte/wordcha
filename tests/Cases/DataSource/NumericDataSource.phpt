@@ -2,7 +2,7 @@
 
 use Contributte\Tester\Toolkit;
 use Contributte\Wordcha\DataSource\NumericDataSource;
-use Nette\InvalidArgumentException;
+use Contributte\Wordcha\Exception\LogicalException;
 use Tester\Assert;
 
 require_once __DIR__ . '/../../bootstrap.php';
@@ -48,7 +48,7 @@ Toolkit::test(function (): void {
 Toolkit::test(function (): void {
 	Assert::exception(function (): void {
 		new NumericDataSource(10, 5);
-	}, InvalidArgumentException::class, 'Min (10) must be less than or equal to max (5)');
+	}, LogicalException::class, 'Min (10) must be less than or equal to max (5)');
 });
 
 // Test negative numbers
